@@ -1,0 +1,9 @@
+*.db
+*.zip
+/azure.txt
+/app.
+*.pyc
+*.jpg
+*.PNG
+*.docx
+*.pdf
