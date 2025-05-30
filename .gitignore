@@ -3,7 +3,10 @@
 /azure.txt
 /app.
 *.pyc
-*.jpg
-*.PNG
 *.docx
 *.pdf
+*.env
+/.idea
+/projectenv/
+/__pycache__/
+reading.py
