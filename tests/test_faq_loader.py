@@ -5,6 +5,10 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
 def test_search_faq_exact_match():
+    """
+        Test that search_faq() returns the correct FAQ entry
+        when an exact question match is found.
+        """
     faq_list = [
         FAQEntry(id=1, question="Що таке API?", answer="API — це інтерфейс..."),
         FAQEntry(id=2, question="Що таке машинне навчання?", answer="Це метод..."),

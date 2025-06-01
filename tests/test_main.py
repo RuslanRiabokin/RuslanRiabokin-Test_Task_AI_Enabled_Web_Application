@@ -8,6 +8,10 @@ client = TestClient(app)
 
 
 def test_post_api_ask_success():
+    """
+        Test that the /api/ask endpoint returns a valid JSON
+        response with an 'answer' field for a known question.
+        """
     response = client.post("/api/ask", json={"question": "Що таке API?"})
     assert response.status_code == 200
     data = response.json()

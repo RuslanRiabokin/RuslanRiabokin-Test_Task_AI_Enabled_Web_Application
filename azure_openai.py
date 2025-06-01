@@ -10,6 +10,16 @@ client = AzureOpenAI(
 
 
 async def generate_answer_with_openai(context: str, question: str) -> str:
+    """
+        Generate an AI-based answer using Azure OpenAI based on the given context and user question.
+
+        Args:
+            context (str): Contextual knowledge (e.g. matched FAQ entries).
+            question (str): User's question to be answered.
+
+        Returns:
+            str: The generated answer or an error message if the request fails.
+        """
     system_prompt = ("Ти — помічник, який відповідає на запитання на основі наданого контексту. "
                      "Не вигадуй інформацію.")
 
