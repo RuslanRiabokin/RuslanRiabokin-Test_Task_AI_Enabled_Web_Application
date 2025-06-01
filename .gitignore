@@ -5,7 +5,13 @@
 *.pyc
 *.docx
 *.pdf
+
+.env
 *.env
+projectenv/
+venv/
+__pycache__/
+
 /.idea
 /projectenv/
 /__pycache__/
