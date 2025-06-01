@@ -10,7 +10,8 @@ client = AzureOpenAI(
 
 
 async def generate_answer_with_openai(context: str, question: str) -> str:
-    system_prompt = "Ти — помічник, який відповідає на запитання на основі наданого контексту. Не вигадуй інформацію."
+    system_prompt = ("Ти — помічник, який відповідає на запитання на основі наданого контексту. "
+                     "Не вигадуй інформацію.")
 
     messages = [
         {"role": "system", "content": system_prompt},

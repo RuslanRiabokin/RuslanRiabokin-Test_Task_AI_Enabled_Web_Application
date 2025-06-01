@@ -7,17 +7,19 @@ import os
 from azure_openai import generate_answer_with_openai
 
 
-
 app = FastAPI()
 faq_list = load_faq_csv()
+
 
 # Модель запиту від користувача
 class QuestionRequest(BaseModel):
     question: str
 
+
 # Модель відповіді
 class AnswerResponse(BaseModel):
     answer: str
+
 
 @app.post("/api/ask", response_model=AnswerResponse)
 async def ask_question(request: QuestionRequest):
@@ -34,9 +36,9 @@ async def ask_question(request: QuestionRequest):
     return {"answer": answer}
 
 
-
 # Підключення папки зі статичними файлами
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 # Віддавати index.html при заході на корінь
 @app.get("/")
