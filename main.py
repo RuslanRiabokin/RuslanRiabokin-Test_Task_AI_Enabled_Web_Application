@@ -4,6 +4,8 @@ from faq_loader import load_faq_csv, search_faq
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 import os
+from azure_openai import generate_answer_with_openai
+
 
 
 app = FastAPI()
@@ -20,11 +22,17 @@ class AnswerResponse(BaseModel):
 @app.post("/api/ask", response_model=AnswerResponse)
 async def ask_question(request: QuestionRequest):
     matches = search_faq(request.question, faq_list)
+
+    # Формуємо контекст: або відповіді з бази, або заглушку
     if matches:
-        # Повертаємо першу знайдену відповідь
-        return {"answer": matches[0].answer}
+        context = "\n".join(f"• {entry.question} — {entry.answer}" for entry in matches)
     else:
-        return {"answer": "Вибач, я не знайшов відповіді у базі знань."}
+        context = "Немає відповідного запису в базі знань."
+
+    # Отримуємо відповідь від OpenAI
+    answer = await generate_answer_with_openai(context, request.question)
+    return {"answer": answer}
+
 
 
 # Підключення папки зі статичними файлами
