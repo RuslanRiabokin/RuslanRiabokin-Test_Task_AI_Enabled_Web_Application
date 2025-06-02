@@ -4,7 +4,7 @@ from faq_loader import load_faq_csv, search_faq
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 import os
-from azure_openai import generate_answer_with_openai
+from ai_provider import generate_answer_with_openai
 
 
 app = FastAPI()
